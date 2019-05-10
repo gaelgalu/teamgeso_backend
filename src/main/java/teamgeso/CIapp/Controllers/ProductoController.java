@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import java.text.ParseException;
 
@@ -34,10 +35,31 @@ public class ProductoController{
         return productRepository.findProductoById(id);
     }
 
-    @PostMapping("/nuevo")
+    @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
     @ResponseBody
-    public Producto create(@RequestBody Producto resource) throws ParseException {
+    public Producto create(@RequestBody Producto resource){
         return productRepository.save(resource);
+    }
+
+    @DeleteMapping("/borrar/{id}")
+    public HttpStatus deleteProduct(@PathVariable long id) {
+        productRepository.deleteById(id);
+        return HttpStatus.OK;
+    }
+
+    @PutMapping("/editar/{id}")
+    public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable long id) {
+
+        Optional<Producto> productOptional = productRepository.findById(id);
+
+        if (!productOptional.isPresent())
+            return HttpStatus.NOT_FOUND;
+
+        product.setId(id);
+        
+        productRepository.save(product);
+
+        return HttpStatus.OK;
     }
 
 }
