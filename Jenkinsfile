@@ -1,6 +1,6 @@
 node {
     stage('Checkout') {
-        git 'https://github.com/l-pizarro/ci-backend'
+        git 'https://github.com/gaelgalu/teamgeso_backend.git'
     }
     
     stage('Compile-Package') {
