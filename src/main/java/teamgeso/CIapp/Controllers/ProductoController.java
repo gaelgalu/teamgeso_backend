@@ -38,7 +38,7 @@ public class ProductoController{
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/borrar/{id}")
-        public String deleteProduct(@PathVariable("id") Integer id) {
+        public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
         productRepository.deleteById(id);
         return deletedName;
