@@ -11,12 +11,24 @@ import java.util.Optional;
 import java.text.ParseException;
 
 
+        @Bean
+        public WebMvcConfigurer corsConfigurer() {
+            return new WebMvcConfigurerAdapter() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+                }
+            };
+        }
+
+
 @RequestMapping("/productos")
 @RestController
 public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
     @CrossOrigin(origins = "http://157.230.12.110:8082/")
+
     @ResponseBody
     public List<Producto> getAllProducts() {
         return productRepository.findAll();
