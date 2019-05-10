@@ -27,7 +27,6 @@ public class ProductoController{
         return productRepository.findAll();
     }
 
-    //This is an example of a comments
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Long id) {
