@@ -6,9 +6,8 @@ node {
     stage('Compile-Package') {
         def mvnHome = tool name: 'MAVEN 3.6.1', type: 'maven'
         sh "${mvnHome}/bin/mvn dependency:tree"
-        sh "${mvnHome}/bin/mvn package"
-        sh "service tomcat stop"
+        sh "${mvnHome}/bin/mvn clean package"
         sh "cp /var/lib/jenkins/workspace/build-backend/target/CIapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps"
-        sh "service tomcat start"
+        sh "service tomcat restart"
     }
 }
