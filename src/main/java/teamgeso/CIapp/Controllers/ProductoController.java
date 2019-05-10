@@ -42,9 +42,10 @@ public class ProductoController{
     }
 
     @DeleteMapping("/borrar/{id}")
-    public HttpStatus deleteProduct(@PathVariable long id) {
+    public String deleteProduct(@PathVariable long id) {
+        String deletedName = findById(id).getName();
         productRepository.deleteById(id);
-        return HttpStatus.OK;
+        return deletedName;
     }
 
     @PutMapping("/editar/{id}")
