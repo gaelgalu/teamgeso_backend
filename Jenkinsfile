@@ -8,6 +8,5 @@ node {
         sh "${mvnHome}/bin/mvn dependency:tree"
         sh "${mvnHome}/bin/mvn clean package"
         sh "cp /var/lib/jenkins/workspace/build-backend/target/CIapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps"
-        sh "sudo service tomcat restart"
     }
 }
