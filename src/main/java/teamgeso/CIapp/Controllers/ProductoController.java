@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.text.ParseException;
 
 
+
 @CrossOrigin(origins = "*", allowCredentials = "false")
 @RestController
 @RequestMapping("/productos")
@@ -40,8 +41,7 @@ public class ProductoController{
     public Producto create(@RequestBody Producto resource){
         return productRepository.save(resource);
     }
-
-    @RequestMapping(value ="/borrar/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE, path = "/borrar/{id}")
     public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
         productRepository.deleteById(id);
