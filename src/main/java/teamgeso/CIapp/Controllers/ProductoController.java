@@ -31,7 +31,7 @@ public class ProductoController{
     //This is an example of an innecesary comment
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Producto getProductById(@PathVariable Long id) {
+    public Producto getProductById(@PathVariable int id) {
         return productRepository.findProductoById(id);
     }
 
@@ -42,14 +42,14 @@ public class ProductoController{
     }
 
     @DeleteMapping("/borrar/{id}")
-    public String deleteProduct(@PathVariable long id) {
+    public String deleteProduct(@PathVariable int id) {
         String deletedName = findById(id).getName();
         productRepository.deleteById(id);
         return deletedName;
     }
 
     @PutMapping("/editar/{id}")
-    public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable long id) {
+    public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable int id) {
 
         Optional<Producto> productOptional = productRepository.findById(id);
 
