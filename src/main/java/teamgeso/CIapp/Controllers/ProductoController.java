@@ -11,19 +11,16 @@ import java.util.Optional;
 import java.text.ParseException;
 
 
-
+@RequestMapping("/productos")
 @RestController
 public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
     @CrossOrigin(origins = "http://157.230.12.110:8082/")
-
-    @RequestMapping("/productos")
     @ResponseBody
     public List<Producto> getAllProducts() {
         return productRepository.findAll();
     }
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Integer id) {
@@ -34,7 +31,7 @@ public class ProductoController{
     public Producto create(@RequestBody Producto resource){
         return productRepository.save(resource);
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "/productos/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/borrar/{id}")
         public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
         productRepository.deleteById(id);
