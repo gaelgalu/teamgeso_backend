@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-
 import java.util.Date;
 import java.util.List;
 
@@ -38,10 +36,6 @@ public class ProductoController{
     @PostMapping("/nuevo")
     @ResponseBody
     public Producto create(@RequestBody Producto resource) throws ParseException {
-        Date date = new Date();
-        long time = date.getTime();
-        new Timestamp(time);
-        resource.setExpirationDate(new Timestamp(time));
         return productRepository.save(resource);
     }
 

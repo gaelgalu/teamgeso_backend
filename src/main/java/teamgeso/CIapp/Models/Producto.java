@@ -1,7 +1,6 @@
 package teamgeso.CIapp.Models;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.io.Serializable;
 
 @Entity
@@ -9,28 +8,28 @@ import java.io.Serializable;
 public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "producto_id")
+    @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name="product_code", nullable = false)
     private String productCode;
 
-    @Column(nullable = false)
+    @Column(name="product_name", nullable = false)
     private String productName;
 
-    @Column(name = "", nullable = false)
-    private Timestamp expirationDate;
+    @Column(name="expiration_date", nullable = false)
+    private String expirationDate;
 
-    @Column(name = "", nullable = false)
+    @Column(nullable = false)
     private String category;
 
-    @Column(name = "", nullable = false)
+    @Column(nullable = false)
     private int price;
 
     public Producto(){
     }
 
-    public Producto(String productCode, String productName, Timestamp expirationDate, String category, int price){
+    public Producto(String productCode, String productName, String expirationDate, String category, int price){
     	this.productCode = productCode;
     	this.productName = productName;
     	this.expirationDate = expirationDate;
@@ -58,11 +57,11 @@ public class Producto implements Serializable {
     	this.productName = productName;
     }
 
-    public Timestamp getExpirationDate(){
+    public String getExpirationDate(){
     	return this.expirationDate;
     }	
 
-    public void setExpirationDate(Timestamp expirationDate){
+    public void setExpirationDate(String expirationDate){
     	this.expirationDate = expirationDate;
     }
 
