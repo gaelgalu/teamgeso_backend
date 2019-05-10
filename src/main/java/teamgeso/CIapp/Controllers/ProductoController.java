@@ -14,7 +14,7 @@ import java.util.List;
 import java.text.ParseException;
 
 
-@CrossOrigin(origins = "http://157.230.12.110:8082")
+@CrossOrigin(origins = "http://157.230.12.110:8082", allowCredentials = "false")
 @RestController
 @RequestMapping("/productos")
 public class ProductoController{
