@@ -1,32 +1,29 @@
 package teamgeso.CIapp.Controllers;
 
 import teamgeso.CIapp.Models.Producto;
-
 import teamgeso.CIapp.Repositories.ProductoRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import java.text.ParseException;
 
 
 
-@CrossOrigin(origins = "*", allowCredentials = "false")
 @RestController
-@RequestMapping("/productos")
 public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
-    @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://157.230.12.110:8082/")
+
+    @RequestMapping("/productos")
     @ResponseBody
     public List<Producto> getAllProducts() {
         return productRepository.findAll();
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Integer id) {
