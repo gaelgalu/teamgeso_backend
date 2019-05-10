@@ -22,40 +22,32 @@ import java.text.ParseException;
 public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
-
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Producto> getAllProducts() {
         return productRepository.findAll();
     }
-
-    //This is an example of an innecesary comment
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Integer id) {
         return productRepository.findProductoById(id);
     }
-
     @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
     @ResponseBody
     public Producto create(@RequestBody Producto resource){
         return productRepository.save(resource);
     }
-    @RequestMapping(method = RequestMethod.DELETE, path = "/borrar/{id}")
+    @RequestMapping(value ="/borrar/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
         productRepository.deleteById(id);
         return deletedName;
     }
-
     @PutMapping("/editar/{id}")
     public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable Integer id) {
-
         Optional<Producto> productOptional = productRepository.findById(id);
-
         if (!productOptional.isPresent())
             return HttpStatus.NOT_FOUND;
-
         product.setId(id);
         
         productRepository.save(product);
