@@ -18,7 +18,7 @@ public class ProductoController{
 	private ProductoRepository productRepository;
 
 
-    @CrossOrigin(origins = "http://157.230.12.110:8080/")
+    @CrossOrigin(origins = "http://157.230.12.110:8082/")
     @RequestMapping("/productos")
     @ResponseBody
     public List<Producto> getAllProducts() {
