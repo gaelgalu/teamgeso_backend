@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 import java.text.ParseException;
 
 @Configuration
@@ -20,6 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**");
+        registry.allowedMethods("*");
     }
 
 
@@ -52,8 +54,6 @@ public class ProductoController{
         return productRepository.save(resource);
     }
 
-
-
     @CrossOrigin(origins = "*", allowCredentials = "false")
     @RequestMapping(value ="/borrar/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable Integer id) {
@@ -61,8 +61,6 @@ public class ProductoController{
         productRepository.deleteById(id);
         return deletedName;
     }
-
-
 
     @CrossOrigin(origins = "*", allowCredentials = "false")
     @PutMapping("/editar/{id}")
