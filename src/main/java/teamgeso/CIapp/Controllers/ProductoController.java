@@ -43,7 +43,7 @@ public class ProductoController{
 
     @DeleteMapping("/borrar/{id}")
     public String deleteProduct(@PathVariable Integer id) {
-        String deletedName = findById(id).getName();
+        String deletedName = productRepository.findById(id).getName();
         productRepository.deleteById(id);
         return deletedName;
     }
