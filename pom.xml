@@ -55,7 +55,7 @@
 			</plugin>
 			 <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
+          <groupId>org.apache.maven.plugin</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
         </plugin>
