@@ -22,6 +22,7 @@ public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
 
+    @CrossOrigin(origins = "*", allowCredentials = "false")
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Producto> getAllProducts() {
@@ -29,18 +30,21 @@ public class ProductoController{
     }
 
     //This is an example of an innecesary comment
+    @CrossOrigin(origins = "*", allowCredentials = "false")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Integer id) {
         return productRepository.findProductoById(id);
     }
 
+    @CrossOrigin(origins = "*", allowCredentials = "false")
     @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
     @ResponseBody
     public Producto create(@RequestBody Producto resource){
         return productRepository.save(resource);
     }
 
+    @CrossOrigin(origins = "*", allowCredentials = "false")
     @RequestMapping(value ="/borrar/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
@@ -48,6 +52,7 @@ public class ProductoController{
         return deletedName;
     }
 
+    @CrossOrigin(origins = "*", allowCredentials = "false")
     @PutMapping("/editar/{id}")
     public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable Integer id) {
 
