@@ -27,7 +27,7 @@ public class ProductoController{
         return productRepository.findAll();
     }
 
-    //This is an example of an innecesary comment.
+    //This is an example of an innecesary comment
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Producto getProductById(@PathVariable Long id) {
