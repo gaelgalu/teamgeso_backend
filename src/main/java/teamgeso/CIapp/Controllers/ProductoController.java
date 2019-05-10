@@ -14,7 +14,7 @@ public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
 
-
+//evaluacion viernes 10 Mayos
     @CrossOrigin(origins = "http://157.230.12.110:8082/")
     @RequestMapping("/productos")
     @ResponseBody
