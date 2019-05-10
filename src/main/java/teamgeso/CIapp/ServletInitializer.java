@@ -10,14 +10,4 @@ public class ServletInitializer extends SpringBootServletInitializer {
 		return application.sources(CIappApplication.class);
 	}
 
-  @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("*").allowedOrigins("*");
-            }
-        };
-    }
-
 }
