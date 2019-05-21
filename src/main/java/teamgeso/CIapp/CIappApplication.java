@@ -29,9 +29,9 @@ public class CIappApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").allowedOrigins("http://157.230.12.110:8082");
-            .allowedHeaders("Access-Control-Allow-Origin", "*")
-            .allowedHeaders("Access-Control-Allow-Headers", "Content-Type,x-requested-with").maxAge(20000)
-            .allowCredentials(false)
+            .allowedHeaders("Access-Control-Allow-Origin", "*");
+            .allowedHeaders("Access-Control-Allow-Headers", "Content-Type,x-requested-with").maxAge(20000);
+            .allowCredentials(false);
             .allowedMethods("DELETE");
             }
         };
