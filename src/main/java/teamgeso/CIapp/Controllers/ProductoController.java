@@ -5,11 +5,8 @@ import teamgeso.CIapp.Repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.text.ParseException;
-
 
 
 @RestController
@@ -17,7 +14,7 @@ public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
 
-
+//evaluacion viernes 10 Mayos
     @CrossOrigin(origins = "http://157.230.12.110:8082/")
     @RequestMapping("/productos")
     @ResponseBody
