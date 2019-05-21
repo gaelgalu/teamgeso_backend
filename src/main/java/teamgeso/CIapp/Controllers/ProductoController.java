@@ -14,8 +14,7 @@ public class ProductoController{
 	@Autowired
 	private ProductoRepository productRepository;
 
-//evaluacion viernes 10 Mayos
-    @CrossOrigin(origins = "http://157.230.12.110:8082/")
+    @CrossOrigin
     @RequestMapping("/productos")
     @ResponseBody
     public List<Producto> getAllProducts() {
@@ -34,12 +33,13 @@ public class ProductoController{
         return productRepository.save(resource);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/borrar/{id}")
+    @RequestMapping(value = "/borrar/{id}", method = RequestMethod.DELETE)
         public String deleteProduct(@PathVariable Integer id) {
         String deletedName = this.getProductById(id).getProductName();
         productRepository.deleteById(id);
         return deletedName;
     }
+    
     @PutMapping("/editar/{id}")
     public HttpStatus updateProduct(@RequestBody Producto product, @PathVariable Integer id) {
         Optional<Producto> productOptional = productRepository.findById(id);
