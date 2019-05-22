@@ -2,7 +2,6 @@ package teamgeso.CIapp.Controllers;
 
 import teamgeso.CIapp.Models.Producto;
 import teamgeso.CIapp.Repositories.ProductoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,10 +10,7 @@ import java.util.Optional;
 
 @RestController
 public class ProductoController{
-	@Autowired
 	private ProductoRepository productRepository;
-
-    @CrossOrigin
     @RequestMapping("/productos")
     @ResponseBody
     public List<Producto> getAllProducts() {
@@ -46,9 +42,7 @@ public class ProductoController{
         if (!productOptional.isPresent())
             return HttpStatus.NOT_FOUND;
         product.setId(id);
-        
         productRepository.save(product);
-
         return HttpStatus.OK;
     }
 
