@@ -7,6 +7,6 @@ node {
         def mvnHome = tool name: 'MAVEN 3.6.1', type: 'maven'
         sh "${mvnHome}/bin/mvn dependency:tree"
         sh "${mvnHome}/bin/mvn clean package"
-        sh "sudo cp /var/lib/jenkins/workspace/build-backend/target/CIapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps"
+        sh "cp /var/lib/jenkins/workspace/build-backend/target/CIapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps"
     }
 }
