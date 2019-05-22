@@ -22,9 +22,7 @@ public class CIappApplication {
         SpringApplication.run(CIappApplication.class, args);
     }
    
-@Configuration
 public class CorsConfig implements WebMvcConfigurer {
-
 @Override
     public void addCorsMappings(CorsRegistry registry) {
 
